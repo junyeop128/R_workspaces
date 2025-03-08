@@ -33,7 +33,6 @@ result5= netflix%>%filter(director=="Mike Flanagan")%>%select('title','director'
 print(result5)
 
 # 문제 8: duration 열에서 영화의 길이가 분 단위로 제공됩니다. 영화(type == "Movie")의 경우, duration 값을 숫자형 데이터로 변환하고 새로운 열 duration_minutes를 추가하세요. # gsub
-
 result6=netflix%>%filter(type == "Movie")%>%mutate(duration_minutes=as.numeric(gsub(" min","",duration))) 
 
 # 문제 9: 영화(type == "Movie")를 기준으로, release_year(출시 연도)를 내림차순으로 정렬하세요.
@@ -45,7 +44,7 @@ result8=netflix%>%filter(type == "TV Show")%>%mutate(seasons=as.numeric(gsub(" S
 print(result8)
 
 # 문제 11: type 열을 기준으로 데이터를 그룹화하고, 각 그룹에 대해 콘텐츠의 총 개수와 평균 release_year를 계산하세요. 결과 데이터프레임은 type, total_count, average_release_year 열을 포함해야 합니다.
-result9=netflix%>%group_by(type)%>%summarise(total_count=n(),average_release_year=avg(release_year))
+result9=netflix%>%group_by(type)%>%summarise(total_count=n(),average_release_year=mean(release_year))
 print(result9)
 
                             
